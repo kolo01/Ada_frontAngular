@@ -94,6 +94,8 @@
               >Prénom</label
             >
             <input
+              [class.is-invalid]="isInvalid(formForum.controls['lastName'])"
+
               formControlName="lastName"
               type="text"
               id="prenom"
@@ -133,6 +135,9 @@
               >Matricule</label
             >
             <input
+
+            [class.is-invalid]="isInvalid(formForum.controls['matricule'])"
+
               formControlName="matricule"
               type="text"
               id="matricule"
