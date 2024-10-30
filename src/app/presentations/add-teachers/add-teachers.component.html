@@ -1,0 +1,220 @@
+<body class="bg-gray-100 font-sans antialiased">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col justify-between">
+      <div class="p-6">
+        <h2 class="text-3xl font-semibold text-center mb-8">Mon Etab</h2>
+        <nav>
+          <ul>
+            <li class="mb-4">
+              <a href="/" class="hover:text-gray-400 flex items-center">
+                <span class="mr-2">🏠</span> Tableau de bord
+              </a>
+            </li>
+            <li class="mb-4">
+              <a href="/students" class="hover:text-gray-400 flex items-center">
+                <span class="mr-2">👥</span> Élèves
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="/teachers"
+                class="text-blue-400 hover:text-blue-500 flex items-center font-medium"
+              >
+                <span class="mr-2">👩‍🏫</span> Professeurs
+              </a>
+            </li>
+            <li class="mb-4">
+              <a href="/users" class="hover:text-gray-400 flex items-center">
+                <span class="mr-2">👤</span> Utilisateurs
+              </a>
+            </li>
+            <li class="mb-4">
+              <a href="/report" class="hover:text-gray-400 flex items-center">
+                <span class="mr-2">📊</span> Rapport
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="p-6">
+        <a
+          href="/login"
+          class="text-gray-400 hover:text-white flex items-center justify-center"
+        >
+          <span class="mr-2">🔓</span> Déconnexion
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <a
+        href="#"
+        class="text-gray-500 hover:text-gray-700 flex items-center mb-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 mr-2"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        Retour
+      </a>
+      <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-semibold mb-6 text-center">
+          Ajouter un professeur
+        </h1>
+        <form [formGroup]="formForum" class="grid grid-cols-2 gap-6">
+          <!-- Champ Nom -->
+          <div>
+            <label for="nom" class="block text-sm font-medium text-gray-700"
+              >Nom</label
+            >
+            <input
+              formControlName="name"
+              type="text"
+              id="nom"
+              name="nom"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Champ Prénom -->
+          <div>
+            <label for="prenom" class="block text-sm font-medium text-gray-700"
+              >Prénom</label
+            >
+            <input
+              formControlName="lastName"
+              type="text"
+              id="prenom"
+              name="prenom"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Champ Genre -->
+          <div class="col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Genre</label>
+
+            <select
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              formControlName="gender"
+            >
+              <option>Selectionner le genre</option>
+              @for (item of gender; track item.name) {
+
+              <option value="{{ item.name }}">
+                {{ item.abbrev }}
+              </option>
+              } @empty {
+              <option>There are no items.</option>
+              }
+            </select>
+          </div>
+
+          <!-- Champ Matricule -->
+          <div>
+            <label
+              for="matricule"
+              class="block text-sm font-medium text-gray-700"
+              >Matricule</label
+            >
+            <input
+              formControlName="matricule"
+              type="text"
+              id="matricule"
+              name="matricule"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Champ Date de Naissance -->
+          <div>
+            <label
+              for="date_naissance"
+              class="block text-sm font-medium text-gray-700"
+              >Date de naissance</label
+            >
+            <input
+              formControlName="birthday"
+              type="date"
+              id="date_naissance"
+              name="date_naissance"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Champ Matiere -->
+          <div>
+            <label for="matiere" class="block text-sm font-medium text-gray-700"
+              >Matière</label
+            >
+            <select
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              formControlName="study"
+            >
+              <option>Selectionner le genre</option>
+              @for (item of study; track item.abbrev) {
+
+              <option value="{{ item.name }}">
+                {{ item.abbrev }}
+              </option>
+              } @empty {
+              <option>There are no items.</option>
+              }
+            </select>
+          </div>
+          <!-- Champ Téléphone -->
+          <div>
+            <label
+              for="telephone"
+              class="block text-sm font-medium text-gray-700"
+              >Téléphone</label
+            >
+            <input
+              formControlName="number"
+              type="text"
+              id="telephone"
+              name="telephone"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Champ Ville -->
+          <div>
+            <label for="ville" class="block text-sm font-medium text-gray-700"
+              >Ville</label
+            >
+            <input
+              formControlName="state"
+              type="text"
+              id="ville"
+              name="ville"
+              class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <!-- Boutons -->
+          <div class="col-span-2 flex justify-center space-x-4">
+            <button
+              type="reset"
+              class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+            >
+              Annuler
+            </button>
+            <button
+              type="submit"
+              (click)="onSubmit()"
+              class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
